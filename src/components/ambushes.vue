@@ -21,8 +21,8 @@
         label="名称" align="center" width="80">
       </el-table-column>
       <el-table-column
-        prop="hlgap"
-        label="gap" align="center" width="50">
+        prop="nhgap"
+        label="gap" align="center" width="60" sortable>
       </el-table-column>
        <el-table-column
         prop="atr"
@@ -37,7 +37,7 @@
     <el-dialog width="80%" :visible.sync="kchart_visible">
       <kchart></kchart> 
     </el-dialog>
-  
+
   </div>
 </template>
 
@@ -58,7 +58,6 @@ export default {
   mounted: function() {
     this.getData();
     this.timer = setInterval(this.getData,60000);  //每1分钟刷新一次
-    //console.log(this.$route.query.status);
   },
   destroyed: function(){
     clearInterval(this.timer);
@@ -67,12 +66,12 @@ export default {
     getData:function(){      
       var vm = this;
       vm.isloading=true;
-      var apiurl = 'http://localhost:8088/preys';
-      vm.$http.get(apiurl,{params:{'status':vm.$route.query.status}})
+      var apiurl = 'http://localhost:8088/ambushes';
+      this.$http.get(apiurl)
               .then(function(response){
                 vm.list = response.data.content;
                 vm.isloading = false;
-                //console.log(vm.list);
+                //console.log(vm.questions);
              })
               .catch(function(response) {
                 vm.isloading = false;

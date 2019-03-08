@@ -11,6 +11,7 @@
               <template slot="title">TURTLE</template>
                 <el-menu-item index="0"><router-link to="/holds">Holds</router-link></el-menu-item>
                 <el-menu-item index="1"><router-link to="/preys">Preys</router-link></el-menu-item>
+                <el-menu-item index="2"><router-link to="/ambushes">Ambushes</router-link></el-menu-item>
             </el-submenu>
             
             <div align="center">{{title}}</div>
@@ -30,7 +31,7 @@ export default {
   data() {
       return {
         title: 'Holds',
-        items:['Holds','Preys']
+        items:['Holds','Preys','Ambushes']
       };
     },
   methods: {

@@ -20,6 +20,12 @@ export default {
           text: '',
           left: 0
         },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'cross'
+          }
+        },
         grid: {
           left: '10%',
           right: '10%',
