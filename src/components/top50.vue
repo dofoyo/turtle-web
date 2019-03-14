@@ -85,7 +85,7 @@ export default {
     getData:function(){      
       var vm = this;
       vm.isloading=true;
-      var apiurl = 'http://localhost:8088/preys';
+      var apiurl = 'http://localhost:8088/top50';
       vm.$http.get(apiurl,{params:{'status':vm.status}})
               .then(function(response){
                 vm.list = response.data.content;

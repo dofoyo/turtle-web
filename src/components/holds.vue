@@ -55,12 +55,18 @@ export default {
     getData:function(){      
       var vm = this;
       vm.isloading=true;
-      var apiurl = 'http://localhost:8088/onhands';
+      var apiurl = 'http://localhost:8088/holds';
       this.$http.get(apiurl)
               .then(function(response){
                 vm.list = response.data.content;
                 vm.isloading = false;
-                //console.log(vm.questions);
+
+                var ids = new Array();
+                for (let i=0; i<vm.list.length; i++) {
+        				  ids.push(vm.list[i].itemID);
+        				}
+        				vm.$store.commit('setItemIDs',ids);
+        				//console.log(vm.$store.state.itemIDs);
              })
               .catch(function(response) {
                 vm.isloading = false;
@@ -71,7 +77,7 @@ export default {
 
     },
     showKchart: function(object) {
-        //console.log(this.kchart_visible)
+        //console.log(object)
         this.$store.commit('setItemID',object.itemID);
         this.kchart_visible = true 
         //console.log(this.kchart_visible)

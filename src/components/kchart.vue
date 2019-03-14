@@ -1,9 +1,14 @@
 <template>
   <div id="main">
+    <el-button-group>
+	  <el-button type="primary" icon="el-icon-arrow-left" @click="previous"></el-button>
+	  <el-button type="primary" icon="el-icon-arrow-right"@click="next"></el-button>
+	</el-button-group>
+    
     <div id='myChart'
            ref="myChart"
            >
-      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -127,6 +132,12 @@ export default {
                 console.log(response);
                 
               })
+    },
+    previous: function(){
+    	this.$store.commit('setIndex',-1);
+    },
+    next: function(){
+    	this.$store.commit('setIndex',1);
     }
   },
   destroyed: function(){
